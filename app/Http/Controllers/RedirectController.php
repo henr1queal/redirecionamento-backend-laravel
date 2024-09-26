@@ -73,11 +73,9 @@ class RedirectController extends Controller
             ], 404);
         }
 
-        $this->redirectService->createDestinations($validate['destinations'], $redirect_id);
+        $destinations = $this->redirectService->createDestinations($validate['destinations'], $redirect_id);
 
-        return response()->json([
-            'message' => 'Redirecionamento(s) adicionado(s)!',
-        ], 200);
+        return response()->json($destinations, 200);
     }
 
     public function show(int $redirect_id)
@@ -86,7 +84,7 @@ class RedirectController extends Controller
         if (!$redirect) {
             return response()->json(['error' => 'Selecione um redirecionamento válido.'], 404);
         }
-        return response()->json(['data' => $redirect], 200);
+        return response()->json($redirect   , 200);
     }
 
     public function destroy(int $redirect_id)

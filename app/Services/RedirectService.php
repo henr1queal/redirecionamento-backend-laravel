@@ -16,7 +16,7 @@ class RedirectService
 
     public function getRedirect(int $redirect_id)
     {
-        return Destination::where('redirect_id', $redirect_id)->get();
+        return Destination::where('redirect_id', $redirect_id)->orderBy('created_at', 'asc')->get();
     }
 
     public function deleteRedirect(int $redirect_id)
@@ -42,6 +42,7 @@ class RedirectService
             $destination['id'] = Str::uuid();
             $destination['redirect_id'] = $redirect_id;
             $destination['created_at'] = now();
+            $destination['count'] = 0;
         }
 
         Destination::insert($destinations);
