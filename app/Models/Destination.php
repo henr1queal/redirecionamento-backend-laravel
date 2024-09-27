@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Destination extends Model
@@ -21,5 +22,10 @@ class Destination extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(Redirect::class);
+    }
+    
+    public function logs(): HasMany
+    {
+        return $this->hasMany(Log::class);
     }
 }
