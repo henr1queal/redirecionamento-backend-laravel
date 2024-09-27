@@ -32,6 +32,7 @@ Route::prefix('redirect')->group(function () {
 
 Route::prefix('destination')->group(function () {
     Route::delete('/{destination_id}/delete', [DestinationController::class, 'destroy']);
+    Route::put('/{destination_id}/update', [DestinationController::class, 'updateDestination']);
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
