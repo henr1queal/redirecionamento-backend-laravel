@@ -14,7 +14,8 @@ class LogService
         $log->destination_id = $destination_id;
         $log->save();
 
-        $log->user_name = $user->name;
+        $log->formatted_created_at = now()->format('d/m/Y H:i');
+        $log->load('user');
         return $log;
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,10 @@ Route::prefix('redirect')->group(function () {
 Route::prefix('destination')->group(function () {
     Route::delete('/{destination_id}/delete', [DestinationController::class, 'destroy']);
     Route::put('/{destination_id}/update', [DestinationController::class, 'updateDestination']);
+});
+
+Route::prefix('logs')->group(function(){
+    Route::get('/{destination_id}', [LogController::class, 'show']);
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
