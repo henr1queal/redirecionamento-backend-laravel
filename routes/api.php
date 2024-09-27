@@ -17,6 +17,7 @@ Route::prefix('auth')->group(function () {
 Route::prefix('customer')->group(function () {
     Route::post('/create', [CustomerController::class, 'store'])->middleware('auth');
     Route::get('/all', [CustomerController::class, 'index'])->middleware('auth');
+    Route::get('/all-without-pagination', [CustomerController::class, 'allCustomers'])->middleware('auth');
     Route::get('/{customer_id}', [CustomerController::class, 'show'])->middleware('auth');
     Route::delete('/{customer_id}/delete', [CustomerController::class, 'destroy'])->middleware('auth');
 });

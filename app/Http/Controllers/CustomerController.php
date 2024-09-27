@@ -27,6 +27,11 @@ class CustomerController extends Controller
         return response()->json($customers, 200);
     }
 
+    public function allCustomers(){
+        $customers = Customer::select('id', 'name')->orderBy('name', 'asc')->get();
+        return response()->json($customers);
+    }
+
     public function show($customer_id)
     {
         $customer = $this->customerService->getCustomer($customer_id);
