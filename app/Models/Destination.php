@@ -12,7 +12,7 @@ class Destination extends Model
 {
     use HasFactory, HasUuids, SoftDeletes;
 
-    protected $fillable = ['url', 'needs_count', 'count', 'redirect_id'];
+    protected $fillable = ['url', 'needs_count', 'count', 'user_id', 'redirect_id'];
     /**
      * Get the user that owns the Destination
      *

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('url');
             $table->boolean('needs_count');
             $table->integer('count')->unsigned()->default(0);
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('redirect_id')->constrained();
             $table->timestamps();
             $table->softDeletes();

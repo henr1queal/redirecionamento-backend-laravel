@@ -38,11 +38,13 @@ class RedirectService
 
     public function createDestinations(array $destinations, $redirect_id)
     {
+        $user_id = Auth()->user()->id;
         foreach ($destinations as &$destination) {
             $destination['id'] = Str::uuid();
             $destination['redirect_id'] = $redirect_id;
             $destination['created_at'] = now();
             $destination['count'] = 0;
+            $destination['user_id'] = $user_id;
         }
 
         Destination::insert($destinations);
