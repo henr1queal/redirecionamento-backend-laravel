@@ -16,7 +16,7 @@ class DestinationController extends Controller
     {
         $destination = Destination::find($destination_id);
         if (!$destination) {
-            return redirect('https://agencia.vision');
+            return redirect(config('app.fallback_redirect_url'));
         }
 
         if ($destination->needs_count === 1) {

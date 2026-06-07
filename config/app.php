@@ -54,6 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'fallback_redirect_url' => env('FALLBACK_REDIRECT_URL', 'https://example.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
